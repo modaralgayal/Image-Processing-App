@@ -15,8 +15,12 @@ export const Upload = () => {
 
   const handleUpload = async () => {
     try {
+      const formData = new FormData();
+      formData.append("image", selectedImage);
+
       const res = await fetch("http://localhost:3000/upload", {
         method: "POST",
+        body: formData,
       });
 
       const data = await res.json();
@@ -39,6 +43,10 @@ export const Upload = () => {
           <img alt="not found" width={"500px"} src={previewUrl} />
           <br /> <br />
           <button onClick={() => setSelectedImage(null)}> Remove image </button>
+          <button type="button" onClick={handleUpload}>
+            {" "}
+            Upload selected image{" "}
+          </button>
         </div>
       )}
 
