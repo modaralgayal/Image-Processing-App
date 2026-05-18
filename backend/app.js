@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import uploadRoutes from "./routes/uploadRouter.js"
+import uploadRoutes from "./routes/uploadRouter.js";
 
 const app = express();
 const port = 3000;
@@ -15,11 +15,10 @@ app.get("/", (req, res) => {
   const title = "Image Processing App";
   const desc = "This app will be crazy";
 
-
-  res.send({title, desc});
+  res.send({ title, desc });
 });
 
-app.use("/upload", uploadRoutes)
+app.use("/upload", uploadRoutes);
 
 app.listen(port, () => {
   console.log(`Listening to port ${port}`);
