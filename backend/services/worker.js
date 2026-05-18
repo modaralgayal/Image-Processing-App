@@ -13,7 +13,9 @@ export const myWorker = new Worker(
     const imagePath = job.data.path;
     console.log(`Resizing image ${imagePath}`);
 
-    await sharp(imagePath).resize(800, 600, { fit: "outside" }).toBuffer();
+    await sharp(imagePath).flip().flop().toFile("output.png");
+    await job.updateProgress(100);
+    console.log(job.progress);
 
     console.log(`Done processing ${imagePath}`);
   },
